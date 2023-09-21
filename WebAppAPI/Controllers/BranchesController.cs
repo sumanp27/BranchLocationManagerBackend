@@ -54,7 +54,7 @@ namespace WebAppAPI.Controllers
         // PUT: api/Branches/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        [ Authorize]
+        //[Authorize]
         public async Task<IActionResult> PutBranch(int id, Branch branch)
         {
             if (id != branch.Id)
@@ -86,7 +86,7 @@ namespace WebAppAPI.Controllers
         // POST: api/Branches
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        [Authorize]
+        //[Authorize]
         public async Task<ActionResult<Branch>> PostBranch(Branch branch)
         {
           if (_context.Branches == null)
@@ -101,7 +101,7 @@ namespace WebAppAPI.Controllers
 
         // DELETE: api/Branches/5
         [HttpDelete("{id}")]
-        [Authorize]
+        //[Authorize]
         public async Task<IActionResult> DeleteBranch(int id)
         {
             if (_context.Branches == null)
