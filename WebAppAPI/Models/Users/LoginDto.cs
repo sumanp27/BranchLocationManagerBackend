@@ -4,6 +4,7 @@ namespace WebAppAPI.Models.Users
 {
     public class LoginDto
     {
+
         [Required]
         [EmailAddress]
         public string Email { get; set; }

@@ -47,22 +47,6 @@ namespace WebAppAPI.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "79f8332a-9275-46b6-bb89-eaa1cea97d46",
-                            ConcurrencyStamp = "85906400-b3a6-4334-8ba0-6d7ddd159f65",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        },
-                        new
-                        {
-                            Id = "6f193acd-1b94-40e2-a323-08407544e430",
-                            ConcurrencyStamp = "d34e1be8-cf40-443b-824b-3cc6b43e1770",
-                            Name = "user",
-                            NormalizedName = "USER"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -244,55 +228,67 @@ namespace WebAppAPI.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("WebAppAPI.Data.Branch", b =>
+            modelBuilder.Entity("WebAppAPI.Models.Branch.BranchDto", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("BuCode5")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("BU_CODE5");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ADDRESS")
+                    b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ADDRESS");
 
-                    b.Property<string>("BUSINESS_HOURS")
+                    b.Property<string>("BusinessHours")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("BUSINESS_HOURS");
 
-                    b.Property<string>("BU_CODE5")
+                    b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CITY");
 
-                    b.Property<string>("CITY")
+                    b.Property<string>("CountryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("COUNTRY_NAME");
 
-                    b.Property<string>("COUNTRY_NAME")
+                    b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CURRENCY");
 
-                    b.Property<string>("CURRENCY")
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("LATITUDE");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("LONGITUDE");
+
+                    b.Property<DateTime>("OpenedDt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("OPENED_DT");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("PHONE");
 
-                    b.Property<int>("LATITUDE")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LONGITUDE")
-                        .HasColumnType("int");
-
-                    b.Property<string>("PHONE")
+                    b.Property<string>("StateName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("STATE_NAME");
 
-                    b.Property<string>("STATE_NAME")
+                    b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("STATUS");
 
-                    b.HasKey("Id");
+                    b.HasKey("BuCode5");
 
-                    b.ToTable("Branches");
+                    b.ToTable("Branches", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

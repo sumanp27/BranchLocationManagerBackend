@@ -15,10 +15,9 @@ namespace WebAppAPI.Migrations
                 name: "Branches",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BU_CODE5 = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    BU_CODE5 = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     OPENED_DT = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    STATUS = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ADDRESS = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CITY = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     STATE_NAME = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -26,12 +25,12 @@ namespace WebAppAPI.Migrations
                     CURRENCY = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PHONE = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BUSINESS_HOURS = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LATITUDE = table.Column<int>(type: "int", nullable: false),
-                    LONGITUDE = table.Column<int>(type: "int", nullable: false)
+                    LATITUDE = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    LONGITUDE = table.Column<decimal>(type: "decimal(18,2)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Branches", x => x.Id);
+                    table.PrimaryKey("PK_Branches", x => x.BU_CODE5);
                 });
         }
 

@@ -12,8 +12,8 @@ using WebAppAPI.Data;
 namespace WebAppAPI.Migrations
 {
     [DbContext(typeof(DemoProjectDbContext))]
-    [Migration("20230912112333_AddedIdentityTable")]
-    partial class AddedIdentityTable
+    [Migration("20230925121235_ADDEDIDENTITYTABLES")]
+    partial class ADDEDIDENTITYTABLES
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -231,58 +231,67 @@ namespace WebAppAPI.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("WebAppAPI.Data.Branch", b =>
+            modelBuilder.Entity("WebAppAPI.Models.Branch.BranchDto", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<string>("BuCode5")
+                        .HasColumnType("nvarchar(450)")
+                        .HasColumnName("BU_CODE5");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("ADDRESS")
+                    b.Property<string>("Address")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("ADDRESS");
 
-                    b.Property<string>("BUSINESS_HOURS")
+                    b.Property<string>("BusinessHours")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("BUSINESS_HOURS");
 
-                    b.Property<string>("BU_CODE5")
+                    b.Property<string>("City")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CITY");
 
-                    b.Property<string>("CITY")
+                    b.Property<string>("CountryName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("COUNTRY_NAME");
 
-                    b.Property<string>("COUNTRY_NAME")
+                    b.Property<string>("Currency")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("CURRENCY");
 
-                    b.Property<string>("CURRENCY")
+                    b.Property<decimal>("Latitude")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("LATITUDE");
+
+                    b.Property<decimal>("Longitude")
+                        .HasColumnType("decimal(18,2)")
+                        .HasColumnName("LONGITUDE");
+
+                    b.Property<DateTime>("OpenedDt")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("OPENED_DT");
+
+                    b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("PHONE");
 
-                    b.Property<int>("LATITUDE")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LONGITUDE")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("OPENED_DT")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PHONE")
+                    b.Property<string>("StateName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("STATE_NAME");
 
-                    b.Property<string>("STATE_NAME")
+                    b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("STATUS");
 
-                    b.HasKey("Id");
+                    b.HasKey("BuCode5");
 
-                    b.ToTable("Branches");
+                    b.ToTable("Branches", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using WebAppAPI.Data.configurations;
+using System.Reflection;
+using WebAppAPI.Models.Branch;
 
 namespace WebAppAPI.Data
 {
@@ -10,12 +11,26 @@ namespace WebAppAPI.Data
         {
             
         }
-        public DbSet<Branch> Branches { get; set; }
+        public  virtual DbSet<BranchDto> Branches { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.ApplyConfiguration(new RoleConfiguration());
+            //modelBuilder.Entity<Branch>(builder =>
+            //{
+            //    // Date is a DateOnly property and date on database
+            //    builder.Property(x => x.OPENED_DT)
+            //        .HasConversion<DateOnlyConverter>();
+
+
+            modelBuilder.ApplyConfiguration(new BranchMapping());
+
+
+
+
+
         }
-        }
+
+       
+    }
     }

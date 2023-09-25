@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using WebAppAPI.Data;
+using WebAppAPI.Models.Branch;
 using WebAppAPI.Models.Users;
 
 namespace WebAppAPI.configurations
@@ -9,6 +10,8 @@ namespace WebAppAPI.configurations
         public MapperConfig()
         {
             CreateMap<ApiUserDto,ApiUser>().ReverseMap();
+            CreateMap<BranchDto,Branch>().ReverseMap();
+            CreateMap<BranchDto, Branch>().ReverseMap();
         }
     }
 }
