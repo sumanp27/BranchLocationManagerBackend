@@ -119,6 +119,7 @@ namespace WebAppAPI.Controllers
                 branch.BusinessHours = branchDto.BusinessHours;
                 branch.Latitude = branchDto.Latitude;
                 branch.Longitude = branchDto.Longitude;
+                branch.Status=branchDto.Status;
                     
                 
 

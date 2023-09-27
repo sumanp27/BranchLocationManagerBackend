@@ -29,35 +29,41 @@ namespace WebAppAPI.Repository
 
             var result = await _userManager.CreateAsync(_user, userDto.Password);
 
-            if (result.Succeeded)
-            {
-                await _userManager.AddToRoleAsync(_user, "User");
-            }
+            //if (result.Succeeded)
+            //{
+            //    await _userManager.AddToRoleAsync(_user, "User");
+            //}
             return result.Errors;
         }
 
-        public async Task<AuthResponseDto> Login(LoginDto loginDto)
+        public async Task<IdentityError> Login(LoginDto loginDto)
         {
 
             _logger.LogInformation($"Looking for an email{loginDto.Email}");
 
             _user = await _userManager.FindByEmailAsync(loginDto.Email);
+           
+
+            if (_user == null)
+            {
+
+                return new IdentityError { 
+                    Code="EMAIL_NOT_FOUND",
+                    Description="User does not exist!"
+                };
+
+            }
             bool isValidUser = await _userManager.CheckPasswordAsync(_user, loginDto.Password);
 
-            if (_user == null || isValidUser == false)
+            if (isValidUser == false)
             {
-                _logger.LogWarning($"Looking for user with  email{loginDto.Email} was not found");
-                return null;
+                return new IdentityError
+                {
+                    Code = "INVALID_PASSWORD",
+                    Description = "Password is incorrect!"
+                };
             }
-            
-            _logger.LogInformation($"token generated  for user with  email{loginDto.Email}  ");
-            return new AuthResponseDto
-            {
-              
-                UserId = _user.Id,
-               
-            };
-
+            return null;
         }
 
       

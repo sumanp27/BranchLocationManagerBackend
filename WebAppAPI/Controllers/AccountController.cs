@@ -38,17 +38,17 @@ namespace WebAppAPI.Controllers
                         }
                         return BadRequest(ModelState);
                     }
-                    return Ok();
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, $"something went wrong in the {nameof(Register)}-User registration attempt for{apiUserDto.Email}");
-                    return Problem($"something went wrong in the {nameof(Register)}", statusCode: 500);
-                }
-
-
-
+                    return Ok(errors);
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"something went wrong in the {nameof(Register)}-User registration attempt for{apiUserDto.Email}");
+                return Problem($"something went wrong in the {nameof(Register)}", statusCode: 500);
+            }
+
+
+
+        }
 
             //api/account/login
             [HttpPost]
@@ -61,13 +61,16 @@ namespace WebAppAPI.Controllers
                 _logger.LogInformation($"login attempt for{loginDto.Email}");
                 try
                 {
-                    var authResponse = await _authmanager.Login(loginDto);
+                    var error = await _authmanager.Login(loginDto);
 
-                    if (authResponse == null)
+                    if (error!= null)
                     {
-                        return Unauthorized();
-                    }
-                    return Ok(authResponse);
+                      
+                    ModelState.AddModelError(error.Code, error.Description);
+                    return BadRequest(ModelState);
+
+                }
+                    return Ok(error);
                 }
                 catch (Exception ex)
                 {
