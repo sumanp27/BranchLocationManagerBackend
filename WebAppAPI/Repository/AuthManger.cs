@@ -28,11 +28,6 @@ namespace WebAppAPI.Repository
             _user.UserName = userDto.Email;
 
             var result = await _userManager.CreateAsync(_user, userDto.Password);
-
-            //if (result.Succeeded)
-            //{
-            //    await _userManager.AddToRoleAsync(_user, "User");
-            //}
             return result.Errors;
         }
 

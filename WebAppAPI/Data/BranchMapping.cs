@@ -15,7 +15,6 @@ namespace WebAppAPI.Data
             builder.Property(e => e.BuCode5).HasColumnName("BU_CODE5");
             builder.ToTable("Branches");
             builder.Property(e => e.OpenedDt)
-                    .HasConversion<DateOnlyConverter>()
                     .HasColumnName("OPENED_DT");
                
                 

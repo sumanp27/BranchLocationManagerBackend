@@ -16,13 +16,6 @@ namespace WebAppAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            //modelBuilder.Entity<Branch>(builder =>
-            //{
-            //    // Date is a DateOnly property and date on database
-            //    builder.Property(x => x.OPENED_DT)
-            //        .HasConversion<DateOnlyConverter>();
-
-
             modelBuilder.ApplyConfiguration(new BranchMapping());
 
 

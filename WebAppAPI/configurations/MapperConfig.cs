@@ -10,8 +10,6 @@ namespace WebAppAPI.configurations
         public MapperConfig()
         {
             CreateMap<ApiUserDto,ApiUser>().ReverseMap();
-            CreateMap<BranchDto,Branch>().ReverseMap();
-            CreateMap<BranchDto, Branch>().ReverseMap();
         }
     }
 }

@@ -9,7 +9,7 @@ namespace WebAppAPI.Models.Branch
         [Required]
         public string BuCode5 { get; set; }
         [Required]
-        public DateOnly OpenedDt { get; set; }
+        public DateTime OpenedDt { get; set; }
       
        
 

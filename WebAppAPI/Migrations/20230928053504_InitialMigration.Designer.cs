@@ -12,8 +12,8 @@ using WebAppAPI.Data;
 namespace WebAppAPI.Migrations
 {
     [DbContext(typeof(DemoProjectDbContext))]
-    [Migration("20230925121235_ADDEDIDENTITYTABLES")]
-    partial class ADDEDIDENTITYTABLES
+    [Migration("20230928053504_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
